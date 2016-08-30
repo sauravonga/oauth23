@@ -61,6 +61,6 @@ exports.deleteCourse = function(req, res) {
     if (err)
       return res.send(err);
 
-    res.json({ message: 'Course removed from the locker!' });
+    res.json({ message: 'Course removed!' });
   });
 };

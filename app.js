@@ -5,17 +5,16 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var courseController = require('./controllers/course');
-var subscriptionController = require('./controllers/subscription');
 var userController = require('./controllers/user');
 var authController = require('./controllers/auth');
 var oauth2Controller = require('./controllers/oauth2');
 var clientController = require('./controllers/client');
 var router = require('./router');
-var subsrouter = require('./router/subscription');
+var courserouter = require('./router/course');
 
 
 // MongoDB
-mongoose.connect('mongodb://localhost:27017/course');
+mongoose.connect('mongodb://localhost:27017/course91');
 
 // Create our Express application
 var app = express();
@@ -41,7 +40,7 @@ app.use(passport.initialize());
 
 // Register all our routes with /api
 app.use('/api', router);
-app.use('/api', subsrouter);
+app.use('/api', courserouter);
 
 app.listen(app.get('port'), function() {
   console.log('app is running on port', app.get('port'));

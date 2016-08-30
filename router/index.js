@@ -3,24 +3,14 @@ var express = require('express');
 var router = express.Router();
 
 var courseController = require('../controllers/course');
-var userController = require('../controllers/user');
 var authController = require('../controllers/auth');
 var oauth2Controller = require('../controllers/oauth2');
 var clientController = require('../controllers/client');
-
-
-router.route('/courses')
-  .post(authController.isAuthenticated, courseController.postCourses)
-  .get(authController.isAuthenticated, courseController.getCourses);
-
-router.route('/courses/:course_id')
-  .get(authController.isAuthenticated, courseController.getCourse)
-  .put(authController.isAuthenticated, courseController.putCourse)
-  .delete(authController.isAuthenticated, courseController.deleteCourse);
+var mindController = require('../controllers/mind');
 
 router.route('/users')
-  .post(userController.postUsers)
-  .get(authController.isAuthenticated, userController.getUsers);
+  .post(mindController.postUsers)
+  .get(authController.isAuthenticated, mindController.getUsers);
 
 router.route('/clients')
   .post(authController.isAuthenticated, clientController.postClients)
